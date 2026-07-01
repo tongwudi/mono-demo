@@ -1,0 +1,82 @@
+## 项目介绍
+
+## monorepo 架构
+
+> 项目工程化架构
+
+### 相比于传统架构的优势
+
+1. 项目管理更方便，可以统一管理多个子项目。
+2. 项目依赖管理更方便，可以统一管理多个子项目的依赖。
+3. 项目代码管理更方便，可以统一管理多个子项目的代码。
+4. 项目代码质量更方便，可以统一管理多个子项目的代码质量。
+
+### pnpm 常用命令
+
+- -w === --workspace-root 表示在根目录操作
+- -F === --filter 表示筛选出指定的项目
+- -D === --save-dev 表示安装开发依赖
+- --save-catalog 表示将依赖保存到 pnpm-workspace.yaml 中统一版本
+
+```bash
+# 快速默认初始化
+pnpm init -y
+
+# 安装项目所有依赖
+pnpm install
+
+# 安装单个 / 多个新依赖包
+pnpm add xxx
+# 安装 xxx 到根目录，并保存到 catalog 中
+pnpm add -w xxx --save-catalog
+# 安装 xxx 到根目录开发依赖，并保存到 catalog 中
+pnpm add -Dw xxx --save-catalog
+
+# 移除单个 / 多个依赖包
+pnpm remove xxx
+# 从根目录移除依赖
+pnpm remove -w xxx
+
+# 执行 xxx 项目的 yyy 命令
+pnpm -F xxx yyy
+
+# 安装子包到项目依赖
+pnpm add @tongwudi/xxx -F xxx
+# 安装子包到项目开发依赖
+pnpm add @tongwudi/xxx -DF xxx
+
+# 生成 eslint.config.mjs 文件
+pnpm dlx @antfu/eslint-config
+```
+
+### 子包开发环境 package.json 示例
+
+```json
+{
+  "name": "@tongwudi/xxx",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  // "types": "./src/index.d.ts",
+  // "exports": {
+  //   ".": {
+  //     "types": "./src/index.d.ts",
+  //     "import": "./src/index.ts"
+  //   }
+  // },
+  // "scripts": {
+  //   "build": "vite build"
+  // },
+  "peerDependencies": {
+    "ant-design-vue": "catalog:"
+  }
+}
+```
+
+### 注意事项
+
+1. 根目录下的 tsconfig.json 文件需要手动创建而不是自动生成。
+2. 子项目 package.json 中 type 字段必须设置为 module，否则会报错。
+3. 子项目与根目录的 package.json 共享依赖，子项目可以使用根目录的依赖。

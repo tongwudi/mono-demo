@@ -1,0 +1,16 @@
+{
+  "name": "@tongwudi/tsconfig",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "base.json",
+    "lib.json",
+    "node.json"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@vue/tsconfig": "catalog:",
+    "vite": "catalog:"
+  }
+}

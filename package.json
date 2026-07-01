@@ -1,0 +1,37 @@
+{
+  "name": "tongwudi",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev:frontend": "pnpm -F @tongwudi/frontend dev",
+    "build:frontend": "pnpm -F @tongwudi/frontend build",
+    "build:ui": "pnpm -F @tongwudi/ui build",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix"
+  },
+  "author": {
+    "name": "tongwudi",
+    "email": "tongwudi@yeah.net"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tongwudi/mono-demo.git"
+  },
+  "bugs": "https://github.com/tongwudi/mono-demo/issues",
+  "homepage": "https://github.com/tongwudi/mono-demo",
+  "packageManager": "pnpm@10.32.1",
+  "engines": {
+    "node": "^20.19.0 || ^22.18.0 || ^24.0.0",
+    "pnpm": ">=10.0.1"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "catalog:",
+    "@tongwudi/tsconfig": "workspace:^",
+    "eslint": "catalog:",
+    "turbo": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vue-tsc": "catalog:"
+  }
+}
